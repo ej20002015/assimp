@@ -41,14 +41,22 @@ project "assimp"
         ".",
     }
 
-    defines
-    {
-    }
-
     filter "configurations:Debug"
         runtime "Debug"
         symbols "on"
 
+        links
+        {
+            --"Vendor/assimp/zlib/bin/Debug/zlibstaticd.lib"
+            "zlib/bin/Debug/zlibstaticd.lib"
+        }
+
     filter "configurations:Release"
         runtime "Release"
         optimize "on"
+
+        links
+        {
+            --"Vendor/assimp/zlib/bin/Release/zlibstatic.lib"
+            "zlib/bin/Debug/zlibstaticd.lib"
+        }
